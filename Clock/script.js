@@ -2,7 +2,11 @@
 const secondHand = document.querySelector('.second_hand')
 const minHand = document.querySelector('.min_hand')
 const hourHand = document.querySelector('.hour_hand')
+const clock_face = document.querySelector('.clock_face');
+const circle = document.querySelector('.circle');
 
+
+let darkMode = false;
 
 setDate();
 
@@ -37,3 +41,22 @@ function setDate(){
 function setHandPos(hand, deg){
     hand.style.transform = `rotate(${deg}deg)`
 }
+
+
+clock_face.addEventListener('click', function() {
+  darkMode = !darkMode;
+  if(darkMode){
+    clock_face.classList.add("dark");
+    minHand.classList.add("dark")
+    hourHand.classList.add("dark")
+    secondHand.classList.add("dark")
+    circle.classList.add("dark")
+  }
+  else{
+    clock_face.classList.remove("dark");
+    minHand.classList.remove("dark")
+    hourHand.classList.remove("dark")
+    secondHand.classList.remove("dark")
+    circle.classList.remove("dark")
+  }
+});

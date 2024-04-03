@@ -1,5 +1,5 @@
-body {
-    background-color: aqua;
+body:has(:not(.dark)) {
+    background-color: white;
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,10 +8,20 @@ body {
     min-height: 100vh;
 }
 
-.clock {
+body:has(.dark) {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.clock:has(:not(.dark)) {
     width: 25rem;
     height: 25rem;
-    background-color: azure;
+    background-color: white;
     border-radius: 50px;
     border: 10px solid whitesmoke;
     display: flex;
@@ -21,13 +31,44 @@ body {
     margin: 0;
 }
 
-.clock_face {
-    border: 5px solid blue; /* Adjust border color and thickness as needed */
-    border-radius: 50%;
-    height:350px;
-    width:350px;
-    position: relative;
+.clock:has(.dark) {
+  width: 25rem;
+  height: 25rem;
+  background-color: black;
+  border-radius: 50px;
+  border: 10px solid rgb(47, 47, 47);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
 }
+
+
+
+.clock_face {
+  border: 5px solid rgba(0, 0, 255, 0.744);
+  border-radius: 50%;
+  height: 350px;
+  width: 350px;
+  position: relative;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.clock_face.dark {
+  border: 5px solid rgba(255, 25, 0, 0.744);
+  border-radius: 50%;
+  height: 350px;
+  width: 350px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 .hand {
     background: black;
@@ -37,26 +78,55 @@ body {
     transform-origin: 100%;
     transform: rotate(90deg);
     transition: all 0.05s;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    transition-timing-function: 
+    cubic-bezier(0.1, 2.7, 0.58, 1);
   }
-  
+
+    .hand.dark {
+      background: rgb(255, 255, 255);
+      height: 6px;
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function:
+      cubic-bezier(0.1, 2.7, 0.58, 1);
+    }
+
   .hour_hand {
-    width: 30%;
+    width: 20%;
     right: 50%;
-
-
   }
   
   .min_hand {
     width: 35%;
     right: 50%;
-
-
   }
   
   .second_hand {
     width: 40%;
     right: 50%;
-
-
   }
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background: rgb(0, 0, 0);
+}
+
+.circle.dark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background: rgb(255, 255, 255);
+}
